@@ -1,7 +1,7 @@
 'use server';
 
 import * as z from 'zod';
-import bcrpyt from 'bcrypt';
+import bcrpytjs from 'bcryptjs';
 
 import { RegisterSchema } from '@/schemas';
 import { db } from '@/lib/db';
@@ -15,7 +15,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
   }
 
   const { email, password, name } = validatedFields.data;
-  const hashedPassword = await bcrpyt.hash(password, 10);
+  const hashedPassword = await bcrpytjs.hash(password, 10);
 
   const existingUser = await getUserByEmail(email);
 
