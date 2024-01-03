@@ -21,8 +21,8 @@ model User {
   emailVerified DateTime?
   image         String?
   password      String?
-
-  accounts Account[]
+  role          UserRole  @default(USER)
+  accounts      Account[]
 }
 
 model Account {
