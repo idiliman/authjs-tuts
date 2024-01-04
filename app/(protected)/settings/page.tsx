@@ -21,7 +21,6 @@ import { UserRole } from '@prisma/client';
 
 const SettingsPage = () => {
   const user = useCurrentUser();
-  console.log('SettingsPage ~ user:', user);
 
   const [error, setError] = useState<string | undefined>();
   const [success, setSuccess] = useState<string | undefined>();
