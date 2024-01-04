@@ -20,6 +20,7 @@ import { useSearchParams } from 'next/navigation';
 export function LoginForm() {
   const searchParams = useSearchParams();
   const urlError = searchParams.get('error') === 'OAuthAccountNotLinked' ? 'Email already in use' : '';
+  const callbackUrl = searchParams.get('callbackUrl');
 
   const [error, setError] = useState<string | undefined>(undefined);
   const [success, setSuccess] = useState<string | undefined>(undefined);
@@ -40,7 +41,7 @@ export function LoginForm() {
     setError(undefined);
 
     startTransition(() => {
-      login(values)
+      login(values, callbackUrl)
         .then((data) => {
           if (data?.success) {
             form.reset();
