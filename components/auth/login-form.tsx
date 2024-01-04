@@ -42,10 +42,10 @@ export function LoginForm() {
     startTransition(() => {
       login(values).then((data) => {
         if (data?.success) {
-          setSuccess(data.success);
+          setSuccess(data?.success);
           setError(undefined);
         } else if (data?.error) {
-          setError(data.error);
+          setError(data?.error);
           setSuccess(undefined);
         }
       });
